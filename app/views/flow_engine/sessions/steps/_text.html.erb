@@ -1,0 +1,11 @@
+<div class="fe-field fe-field--text">
+  <textarea name="answer"
+            rows="6"
+            class="fe-input fe-input--textarea"
+            placeholder="<%= node.decorations&.dig(:placeholder) || "Type your answer here..." %>"
+            <% if node.decorations&.dig(:maxlength) %>maxlength="<%= node.decorations[:maxlength] %>"<% end %>
+  ></textarea>
+  <% if node.decorations&.dig(:hint) %>
+    <p class="fe-field__hint"><%= node.decorations[:hint] %></p>
+  <% end %>
+</div>

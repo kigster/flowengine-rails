@@ -1,0 +1,41 @@
+<h1>Flow Definitions</h1>
+
+<%= link_to "New Definition", flow_engine.new_admin_definition_path, class: "fe-btn fe-btn--primary" %>
+
+<% @grouped.each do |name, versions| %>
+  <div class="fe-definition-group">
+    <h2><%= name %></h2>
+    <table class="fe-table">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Active</th>
+          <th>Sessions</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% versions.each do |definition| %>
+          <tr>
+            <td>v<%= definition.version %></td>
+            <td><%= definition.active? ? "Yes" : "No" %></td>
+            <td><%= definition.flow_sessions.count %></td>
+            <td><%= definition.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td>
+              <%= link_to "View", flow_engine.admin_definition_path(definition) %>
+              <% unless definition.readonly? %>
+                | <%= link_to "Edit", flow_engine.edit_admin_definition_path(definition) %>
+              <% end %>
+              <% if definition.active? %>
+                | <%= link_to "Deactivate", flow_engine.deactivate_admin_definition_path(definition), data: { turbo_method: :post } %>
+              <% else %>
+                | <%= link_to "Activate", flow_engine.activate_admin_definition_path(definition), data: { turbo_method: :post } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

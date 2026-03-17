@@ -1,0 +1,8 @@
+<div class="fe-field fe-field--single-select">
+  <% (node.options || []).each do |option| %>
+    <label class="fe-radio">
+      <input type="radio" name="answer" value="<%= option %>">
+      <span><%= option %></span>
+    </label>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<div class="fe-field fe-field--multi-select">
+  <% (node.options || []).each do |option| %>
+    <label class="fe-checkbox">
+      <input type="checkbox" name="answer_values[]" value="<%= option %>">
+      <span><%= option %></span>
+    </label>
+  <% end %>
+</div>

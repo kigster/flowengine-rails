@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowEngine</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="<%= flow_engine.root_path %>assets/flow_engine/application.css">
+</head>
+<body>
+  <div class="fe-container">
+    <% if flash[:notice] %>
+      <div class="fe-flash fe-flash--notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="fe-flash fe-flash--alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
+</html>
