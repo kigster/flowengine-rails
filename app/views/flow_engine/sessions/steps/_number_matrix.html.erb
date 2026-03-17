@@ -1,0 +1,13 @@
+<div class="fe-field fe-field--number-matrix">
+  <% (node.fields || []).each do |field_name| %>
+    <div class="fe-matrix-row">
+      <label class="fe-matrix-row__label" for="answer_fields_<%= field_name %>"><%= field_name %></label>
+      <input type="number"
+             name="answer_fields[<%= field_name %>]"
+             id="answer_fields_<%= field_name %>"
+             value="0"
+             min="0"
+             class="fe-input fe-input--number">
+    </div>
+  <% end %>
+</div>

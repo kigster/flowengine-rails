@@ -1,0 +1,9 @@
+<h1>Mermaid Diagram: <%= @definition.name %> v<%= @definition.version %></h1>
+
+<div class="fe-mermaid">
+  <pre class="fe-code"><code><%= @diagram %></code></pre>
+</div>
+
+<p>
+  <%= link_to "Back", flow_engine.admin_definition_path(@definition), class: "fe-btn" %>
+</p>

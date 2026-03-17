@@ -1,0 +1,17 @@
+<h1>Start a New Flow</h1>
+
+<% if @definitions.any? %>
+  <div class="fe-definition-list">
+    <% @definitions.each do |definition| %>
+      <div class="fe-definition-card">
+        <h2><%= definition.name %> <small>v<%= definition.version %></small></h2>
+        <%= link_to "Start",
+              flow_engine.sessions_path(definition_id: definition.id, **(@embed_mode ? { embed: "true" } : {})),
+              class: "fe-btn fe-btn--primary",
+              data: { turbo_method: :post } %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No active flow definitions available.</p>
+<% end %>

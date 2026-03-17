@@ -1,0 +1,26 @@
+<div class="fe-session" data-controller="step">
+  <div class="fe-progress" data-controller="progress" data-progress-value="<%= @progress %>">
+    <div class="fe-progress__bar" style="width: <%= @progress %>%"></div>
+  </div>
+  <span class="fe-progress__text">Step <%= @progress %>% complete</span>
+
+  <% if @node %>
+    <div class="fe-step">
+      <h2 class="fe-step__question"><%= @node.question %></h2>
+
+      <%= form_with url: flow_engine.session_path(@flow_session, **embed_mode? ? { embed: "true" } : {}),
+                    method: :patch,
+                    local: true,
+                    data: { step_target: "form" } do |form| %>
+
+        <%= render_step(@node, form) %>
+
+        <div class="fe-step__actions">
+          <%= form.submit "Continue", class: "fe-btn fe-btn--primary", data: { step_target: "submit" } %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>This session has no current step.</p>
+  <% end %>
+</div>

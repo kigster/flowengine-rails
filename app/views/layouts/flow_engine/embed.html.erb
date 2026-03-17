@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="<%= flow_engine.root_path %>assets/flow_engine/application.css">
+  <style>
+    body { margin: 0; padding: 0; background: transparent; }
+    .fe-container { --fe-max-width: 100%; padding: var(--fe-space-md); }
+  </style>
+</head>
+<body>
+  <div class="fe-container">
+    <%= yield %>
+  </div>
+
+  <script>
+    function postResize() {
+      var height = document.body.scrollHeight;
+      window.parent.postMessage({ type: 'flowengine:resize', height: height }, '*');
+    }
+    window.addEventListener('load', postResize);
+    new MutationObserver(postResize).observe(document.body, { childList: true, subtree: true });
+  </script>
+</body>
+</html>

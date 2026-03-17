@@ -1,0 +1,34 @@
+<div class="fe-completed">
+  <h1>Flow Complete</h1>
+
+  <div class="fe-completed__summary">
+    <h2><%= @flow_session.flow_definition.name %> — Results</h2>
+
+    <table class="fe-table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% (@flow_session.answers || {}).each do |step_id, answer| %>
+          <tr>
+            <td><%= step_id %></td>
+            <td><%= answer.is_a?(Hash) || answer.is_a?(Array) ? answer.to_json : answer %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if embed_mode? %>
+    <script>
+      window.parent.postMessage({
+        type: 'flowengine:completed',
+        sessionId: '<%= @flow_session.id %>',
+        answers: <%= raw @result.to_json %>
+      }, '*');
+    </script>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, definition], url: url, method: method, local: true do |form| %>
+  <% if definition.errors.any? %>
+    <div class="fe-errors">
+      <h3><%= pluralize(definition.errors.count, "error") %> prevented this definition from being saved:</h3>
+      <ul>
+        <% definition.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="fe-form-group">
+    <%= form.label :name, class: "fe-label" %>
+    <%= form.text_field :name, class: "fe-input" %>
+  </div>
+
+  <div class="fe-form-group">
+    <%= form.label :dsl, "DSL Definition", class: "fe-label" %>
+    <%= form.text_area :dsl, rows: 20, class: "fe-input fe-input--textarea fe-input--code" %>
+  </div>
+
+  <div class="fe-form-group">
+    <%= form.submit class: "fe-btn fe-btn--primary" %>
+    <%= link_to "Cancel", flow_engine.admin_definitions_path, class: "fe-btn" %>
+  </div>
+<% end %>

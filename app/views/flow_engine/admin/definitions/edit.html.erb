@@ -1,0 +1,5 @@
+<h1>Edit: <%= @definition.name %> v<%= @definition.version %></h1>
+
+<%= render "form", definition: @definition,
+                   url: flow_engine.admin_definition_path(@definition),
+                   method: :patch %>

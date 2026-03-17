@@ -1,0 +1,25 @@
+<h1><%= @definition.name %> <small>v<%= @definition.version %></small></h1>
+
+<div class="fe-definition-detail">
+  <p><strong>Status:</strong> <%= @definition.active? ? "Active" : "Inactive" %></p>
+  <p><strong>Sessions:</strong> <%= @definition.flow_sessions.count %></p>
+  <p><strong>Steps:</strong> <%= @definition.total_steps %></p>
+
+  <div class="fe-definition-detail__actions">
+    <% if @definition.active? %>
+      <%= link_to "Deactivate", flow_engine.deactivate_admin_definition_path(@definition), method: :post, data: { turbo_method: :post }, class: "fe-btn" %>
+    <% else %>
+      <%= link_to "Activate", flow_engine.activate_admin_definition_path(@definition), method: :post, data: { turbo_method: :post }, class: "fe-btn fe-btn--primary" %>
+    <% end %>
+
+    <% unless @definition.readonly? %>
+      <%= link_to "Edit", flow_engine.edit_admin_definition_path(@definition), class: "fe-btn" %>
+    <% end %>
+
+    <%= link_to "Mermaid Diagram", flow_engine.mermaid_admin_definition_path(@definition), class: "fe-btn" %>
+    <%= link_to "Back", flow_engine.admin_definitions_path, class: "fe-btn" %>
+  </div>
+
+  <h2>DSL Source</h2>
+  <pre class="fe-code"><code><%= @definition.dsl %></code></pre>
+</div>
