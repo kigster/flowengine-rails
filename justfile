@@ -26,9 +26,6 @@ cli DATA SCHEMA *ARGS:
     #!/usr/bin/env bash
     cd .. && ./cli validate-json -f {{DATA}} -s {{SCHEMA}}
 
-validate-valid-json:
-    ./cli validate-json -f VALID-JSON/sample.json -s VALID-JSON/schema.json
-
 format:
     @bundle exec rubocop -a
     @bundle exec rubocop --auto-gen-config

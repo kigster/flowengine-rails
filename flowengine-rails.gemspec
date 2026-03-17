@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "flowengine", "~> 0.1"
-  spec.add_dependency "rails", ">= 8.0.1"
+  spec.add_dependency "rails", ">= 8.1.2"
   spec.add_dependency "stimulus-rails", "~> 1.0"
   spec.add_dependency "turbo-rails", "~> 2.0"
 end

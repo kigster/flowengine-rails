@@ -13,7 +13,7 @@ PATH
   specs:
     flowengine-rails (0.1.0)
       flowengine (~> 0.1)
-      rails (>= 8.0.1)
+      rails (>= 8.1.2)
       stimulus-rails (~> 1.0)
       turbo-rails (~> 2.0)
 
@@ -187,6 +187,10 @@ GEM
     nokogiri (1.19.1-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.1-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.19.1-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.19.1-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.27.0)
     parser (3.3.10.2)
