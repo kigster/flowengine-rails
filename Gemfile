@@ -18,3 +18,4 @@ gem "rubocop-rails", require: false
 gem "rubocop-rspec", require: false
 gem "simplecov", "~> 0.22"
 gem "sqlite3"
+gem "yard", require: false
