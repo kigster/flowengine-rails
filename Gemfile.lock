@@ -1,5 +1,6 @@
-PATH
-  remote: ../flowengine
+GIT
+  remote: https://github.com/kigster/flowengine.git
+  revision: 8cb18948f8de1122953f35174a76bdb7765ad9f2
   specs:
     flowengine (0.4.0)
       ruby_llm
