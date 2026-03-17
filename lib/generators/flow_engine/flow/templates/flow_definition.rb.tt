@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+# Flow definition: <%= class_name %>
+# Edit this file then seed it with: rails flow_engine:seed:<%= file_name %>
+
+<%= class_name.upcase %>_DSL = <<~RUBY
+  FlowEngine.define do
+    start :welcome
+
+    step :welcome do
+      type :display
+      question "Welcome to the <%= class_name.titleize %> flow!"
+      transition to: :first_question
+    end
+
+    step :first_question do
+      type :text
+      question "What is your name?"
+      transition to: :done
+    end
+
+    step :done do
+      type :display
+      question "Thank you for completing the flow!"
+    end
+  end
+RUBY

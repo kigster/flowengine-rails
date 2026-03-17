@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+namespace :flow_engine do
+  namespace :seed do
+    desc "Seed the <%= class_name %> flow definition"
+    task <%= file_name %>: :environment do
+      require Rails.root.join("db/flow_definitions/<%= file_name %>")
+
+      dsl_text = <%= class_name.upcase %>_DSL
+
+      definition = FlowEngine::Definition.find_or_initialize_by(
+        name: "<%= file_name %>",
+        version: 1
+      )
+      definition.dsl = dsl_text
+      definition.save!
+      definition.activate!
+
+      puts "Seeded and activated: #{definition.name} v#{definition.version}"
+    end
+  end
+end
