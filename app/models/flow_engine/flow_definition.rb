@@ -68,7 +68,7 @@ module FlowEngine
       return if dsl.blank?
 
       FlowEngine::Rails::DslLoader.load(dsl)
-    rescue FlowEngine::Error => e
+    rescue FlowEngine::Errors::Error => e
       errors.add(:dsl, "is invalid: #{e.message}")
     end
   end

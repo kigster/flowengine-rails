@@ -12,7 +12,7 @@ RSpec.describe FlowEngine::Rails::DslLoader do
     it "raises on invalid DSL" do
       expect do
         described_class.load("invalid ruby {{{{")
-      end.to raise_error(FlowEngine::DefinitionError)
+      end.to raise_error(FlowEngine::Errors::DefinitionError)
     end
 
     context "with caching enabled" do
