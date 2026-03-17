@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "flowengine", path: "../flowengine"
+gem "flowengine", github: "kigster/flowengine"
 
 gem "irb"
 gem "rake", "~> 13.0"
