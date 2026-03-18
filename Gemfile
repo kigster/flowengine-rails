@@ -15,6 +15,7 @@ gem "rspec-its", "~> 2.0"
 gem "rspec-rails"
 gem "rubocop", "~> 1.21"
 gem "rubocop-rails", require: false
+gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
 gem "simplecov", "~> 0.22"
 gem "sqlite3"
