@@ -11,19 +11,23 @@ def shell(*args)
   system(args.join(" "))
 end
 
+desc "Clean all temporary files"
 task :clean do
   shell("rm -rf pkg/ tmp/ coverage/ doc/ ")
 end
 
+desc "Build the gem and install it locally"
 task gem: [:build] do
   shell("gem install pkg/*")
 end
 
+desc "Update unix permissions on the gem sources before packaging"
 task permissions: [:clean] do
   shell("chmod -v o+r,g+r * */* */*/* */*/*/* */*/*/*/* */*/*/*/*/*")
   shell("find . -type d -exec chmod o+x,g+x {} \\;")
 end
 
+desc "Build the gem for distribution"
 task build: :permissions
 
 YARD::Rake::YardocTask.new(:doc) do |t|
